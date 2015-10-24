@@ -1,5 +1,6 @@
 
 Getting and Cleaning Data Project
+
  This repo is for the final project in this course. Following are the instructions to process, clean the data given to generate 
  two more data products: tidy.txt and meanAndStd.csv 
  
