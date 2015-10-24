@@ -81,10 +81,6 @@ colnames(mergedTrainTestData) <- c("subject", "activity",measuresNames)
 mergedTrainTestData$activity <- factor(mergedTrainTestData$activity, levels = activityLabels[,1], labels = activityLabels[,2])
 mergedTrainTestData$subject <- as.factor(mergedTrainTestData$subject)
 
-mergedTrainTestDataMelted <- melt(mergedTrainTestData, id = c("subject", "activity"))
-mergedTrainTestDataMean <- dcast(mergedTrainTestDataMelted, subject + activity ~ variable, mean)
-
-write.table(mergedTrainTestDataMean, "tidy.txt", row.names = FALSE, quote = FALSE)
-
+# calculate the average of each variable and create a new dataset
 meanAndStd <- mergedTrainTestData[,c(1,2, grep("STD", colnames(mergedTrainTestData)), grep("Mean", colnames(mergedTrainTestData)))]
-write.table(meanAndStd, "meanAndStd.csv", row.names = FALSE, quote = FALSE)
+write.table(meanAndStd, "tidy.txt", row.names = FALSE, quote = FALSE)
