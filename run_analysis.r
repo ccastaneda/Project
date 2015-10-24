@@ -11,7 +11,7 @@
 #    of each variable for each activity and each subject.
 
 ##### Read the data
-library(reshape2)
+#library(reshape2)
 require(data.table)
 
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
@@ -81,10 +81,10 @@ colnames(mergedTrainTestData) <- c("subject", "activity",measuresNames)
 mergedTrainTestData$activity <- factor(mergedTrainTestData$activity, levels = activityLabels[,1], labels = activityLabels[,2])
 mergedTrainTestData$subject <- as.factor(mergedTrainTestData$subject)
 
-mergedTrainTestDataMelted <- melt(mergedTrainTestData, id = c("subject", "activity"))
-mergedTrainTestDataMean <- dcast(mergedTrainTestDataMelted, subject + activity ~ variable, mean)
+#mergedTrainTestDataMelted <- melt(mergedTrainTestData, id = c("subject", "activity"))
+#mergedTrainTestDataMean <- dcast(mergedTrainTestDataMelted, subject + activity ~ variable, mean)
 
-write.table(mergedTrainTestDataMean, "tidy.txt", row.names = FALSE, quote = FALSE)
+#write.table(mergedTrainTestDataMean, "tidy.txt", row.names = FALSE, quote = FALSE)
 
 meanAndStd <- mergedTrainTestData[,c(1,2, grep("STD", colnames(mergedTrainTestData)), grep("Mean", colnames(mergedTrainTestData)))]
-write.table(meanAndStd, "meanAndStd.csv", row.names = FALSE, quote = FALSE)
+write.table(meanAndStd, "tidy.txt", row.names = FALSE, quote = FALSE)
