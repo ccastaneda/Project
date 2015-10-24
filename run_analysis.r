@@ -84,7 +84,7 @@ mergedTrainTestData$subject <- as.factor(mergedTrainTestData$subject)
 mergedTrainTestDataMelted <- melt(mergedTrainTestData, id = c("subject", "activity"))
 mergedTrainTestDataMean <- dcast(mergedTrainTestDataMelted, subject + activity ~ variable, mean)
 
-write.table(mergedTrainTestDataMean, "tidy.csv", row.names = FALSE, quote = FALSE)
+write.table(mergedTrainTestDataMean, "tidy.txt", row.names = FALSE, quote = FALSE)
 
 meanAndStd <- mergedTrainTestData[,c(1,2, grep("STD", colnames(mergedTrainTestData)), grep("Mean", colnames(mergedTrainTestData)))]
 write.table(meanAndStd, "meanAndStd.csv", row.names = FALSE, quote = FALSE)
